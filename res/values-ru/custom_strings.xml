@@ -30,6 +30,11 @@
     <string name="night_bright_minimum">Минимальная яркость</string>
     <string name="night_bright_low">Низкая яркость</string>
     <string name="night_bright_medium">Средняя яркость</string>
+	
+    <!-- Changelog -->
+    <string name="changelog_title">Список изменений</string>
+    <string name="changelog_summary">С момента последнего обновления</string>
+    <string name="changelog_error">Не удается загрузить список изменений</string>
 
     <string name="background_processes_settings_title">Фоновые процессы</string>
 

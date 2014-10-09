@@ -31,6 +31,11 @@
     <string name="night_bright_low">Low brightness</string>
     <string name="night_bright_medium">Medium brightness</string>
 
+    <!-- Changelog -->
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_summary">Since the last update</string>
+    <string name="changelog_error">Unable to load changelog</string>
+
     <!-- Ambient Display Brightness -->
     <string name="ambient_doze_custom_brightness_title">Ambient fixed brightness</string>
     <string name="ambient_doze_auto_brightness_title">Ambient auto brightness</string>
