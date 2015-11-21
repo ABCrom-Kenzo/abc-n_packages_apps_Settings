@@ -58,6 +58,11 @@
                         android:targetClass="@string/config_wallpaper_picker_class" />
         </com.android.settingslib.RestrictedPreference>
 
+        <PreferenceScreen
+                android:key="display_rotation"
+                android:title="@string/display_rotation_title"
+                android:fragment="com.android.settings.abc.DisplayRotation" />
+
         <com.android.settings.TimeoutListPreference
                 android:key="screen_timeout"
                 android:title="@string/screen_timeout"
@@ -143,11 +148,6 @@
         <com.android.settings.display.DensityPreference
                 android:key="density"
                 android:title="@string/developer_smallest_width" />
-
-        <DropDownPreference
-                android:key="auto_rotate"
-                android:summary="%s"
-                android:title="@string/display_auto_rotate_title" />
 
         <PreferenceScreen
                 android:key="wifi_display"
