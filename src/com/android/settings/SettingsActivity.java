@@ -142,6 +142,7 @@ import com.abc.settings.fragments.FlingSettings;
 import com.abc.settings.fragments.NavbarSettings;
 import com.abc.settings.fragments.SmartbarSettings;
 import com.abc.settings.fragments.PulseSettings;
+import com.abc.settings.fragments.HardwareKeysSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -376,7 +377,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             SmartbarSettings.class.getName(),
             PulseSettings.class.getName(),
             RunningServices.class.getName(),
-            DisplayRotation.class.getName()
+            DisplayRotation.class.getName(),
+            HardwareKeysSettings.class.getName()
     };
 
 
