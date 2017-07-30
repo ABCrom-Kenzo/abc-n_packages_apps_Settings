@@ -122,4 +122,13 @@
     <string name="fp_swipe_call_actions_up_answer_down_silence">Swipe up to respond to incoming calls, down to silence them</string>
 
     <string name="background_processes_settings_title">Background processes</string>
+
+    <!-- OTA Updates-->
+    <string name="ota_title">ABC updates</string>
+    <string name="ota_summary">Download the latest version of ROM</string>
+	
+    <!-- Changelog -->
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_summary">Since the last update</string>
+    <string name="changelog_error">Unable to load changelog</string>
 </resources>

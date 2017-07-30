@@ -107,4 +107,13 @@
     <string name="remove_tile_summaries_summary_disabled">Подсказки в главном меню выключены</string>
     <string name="dashboard_columns_portrait_title">Количество столбцов (в портретном режиме)</string>
     <string name="dashboard_columns_landscape_title">Количество столбцов (в альбомном режиме)</string>
+
+	<!-- OTA Updates-->
+    <string name="ota_title">Обновления ABC</string>
+	<string name="ota_summary">Загрузить последнюю версию прошивки</string>
+	
+	<!-- Changelog -->
+    <string name="changelog_title">Список изменений</string>
+    <string name="changelog_summary">С момента последнего обновления</string>
+    <string name="changelog_error">Не удается загрузить список изменений</string>
 </resources>
