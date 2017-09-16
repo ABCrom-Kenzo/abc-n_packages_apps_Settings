@@ -128,12 +128,12 @@ import com.android.settings.wifi.WifiAPITest;
 import com.android.settings.wifi.WifiInfo;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
-
 import com.abc.settings.AbcSettings;
 import com.abc.settings.FlingSettings;
 import com.abc.settings.NavbarSettings;
 import com.abc.settings.PulseSettings;
 import com.abc.settings.SmartbarSettings;
+import com.android.settings.abc.DisplayRotation;
 
 public class SettingsGateway {
 
@@ -258,7 +258,8 @@ public class SettingsGateway {
             NavbarSettings.class.getName(),
             FlingSettings.class.getName(),
             SmartbarSettings.class.getName(),
-            PulseSettings.class.getName()
+            PulseSettings.class.getName(),
+            DisplayRotation.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {

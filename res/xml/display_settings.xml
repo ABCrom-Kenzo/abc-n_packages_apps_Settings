@@ -57,10 +57,11 @@
         android:entries="@array/screen_timeout_entries"
         android:entryValues="@array/screen_timeout_values" />
 
-    <DropDownPreference
-        android:key="auto_rotate"
-        android:summary="@string/summary_placeholder"
-        android:title="@string/display_auto_rotate_title" />
+    <Preference
+        android:key="display_rotation"
+        android:title="@string/display_rotation_title"
+		android:summary="@string/display_rotation_summary"
+        android:fragment="com.android.settings.abc.DisplayRotation" />
 
     <Preference
         android:key="font_size"
