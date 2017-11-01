@@ -26,4 +26,6 @@
     <string name="changelog_error">Unable to load changelog</string>
     <!-- SIM Preferences -->
     <string name="select_sim_for_sms">Select a SIM for SMS</string>
+	<!-- Pixel color on sim card -->
+    <string name="default_sim_color">Pixel</string>
 </resources>
