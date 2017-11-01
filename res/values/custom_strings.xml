@@ -62,4 +62,7 @@
     <string name="alert_on_charged_level_80">"80%"</string>
     <string name="alert_on_charged_level_90">"90%"</string>
     <string name="alert_on_charged_level_99">"99%"</string>
+	
+	<!-- Pixel color on sim card -->
+    <string name="default_sim_color">Pixel</string>
 </resources>
