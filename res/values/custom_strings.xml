@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-* Copyright (C) 2017 The halogenOS Project
+* Copyright (C) 2017 ABC rom
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -65,4 +65,5 @@
     <string name="value_equals_default">Def</string>
     <string name="show_light_on_zen_title">Blink during Do Not Disturb</string>
 
+    <string name="notif_sound_screen_on_title">Allow sound and vibration if screen is on</string>
 </resources>
