@@ -23,6 +23,12 @@
 
     <string name="rom_version_title">Версия ABC Rom</string>
 
+    <!-- Changelog -->
+    <string name="changelog_title">Список изменений</string>
+    <string name="changelog_summary">С момента последнего обновления</string>
+    <string name="changelog_error">Не удается загрузить список изменений</string>
+    <!-- SIM Preferences -->
+    <string name="select_sim_for_sms">Выберите SIM-карту для СМС</string>
     <string name="twilight_mode_location_dialog">Передача геоданных отключена</string>
     <string name="twilight_mode_location_disabled">Нет доступа к поиску местоположения</string>
     <string name="twilight_mode_location_enable">Включить</string>
