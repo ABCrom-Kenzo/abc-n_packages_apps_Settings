@@ -3340,7 +3340,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.abc.settings.fragments.ButtonSettings" />
+                android:value="com.abc.settings.ButtonSettings" />
         </activity>
 
         <!-- Global navbar settings -->

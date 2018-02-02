@@ -134,7 +134,7 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 
 import com.abc.settings.AbcSettings;
-import com.abc.settings.fragments.ButtonSettings;
+import com.abc.settings.ButtonSettings;
 import com.abc.settings.FlingSettings;
 import com.abc.settings.NavbarSettings;
 import com.abc.settings.PulseSettings;
