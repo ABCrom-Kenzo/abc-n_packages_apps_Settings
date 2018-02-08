@@ -69,7 +69,6 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
     private static final String KEY_IMPORTANCE = "importance";
     private static final String KEY_ADVANCED = "advanced";
     private static final String KEY_LIGHT_ON_ZEN = "show_light_on_zen";
-    private static final String KEY_SOUND_SCREEN_ON = "notif_sound_screen_on";
     private static final String KEY_LIGHTS_CAT = "light_customization";
 
     private Preference mImportance;
@@ -84,8 +83,9 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
     private EntityHeaderController mHeaderPref;
     private PreferenceGroup mAdvanced;
     private SwitchPreference mLightOnZen;
-    private SwitchPreference mSoundScreenOn;
     private PreferenceGroup mLightsCategory;
+
+    private int mLedColor = 0;
 
     @Override
     public int getMetricsCategory() {
@@ -114,7 +114,6 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
             populateDefaultChannelPrefs();
             //setup lights for uncategorized channel
             setupLights();
-            setupSound();
             mShowLegacyChannelConfig = true;
         } else {
             populateUpgradedChannelPrefs();
@@ -151,7 +150,6 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
         setupVisOverridePref(mChannel.getLockscreenVisibility());
         //setup lights for categorized channel
         setupLights();
-        setupSound();
         setupVibrate();
         setupRingtone();
         setupImportance();
@@ -256,21 +254,26 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
                     Settings.System.putInt(mContext.getContentResolver(),
                         NOTIFICATION_LIGHT_PULSE, 1);
                 }
+                showLedPreview();
+                if (!lights) {
+                    mNm.forcePulseLedLight(-1, -1, -1);
+                }
                 return true;
             }
         });
         //light color pref
         int defaultLightColor = getResources().getColor(com.android.internal.R.color.config_defaultNotificationColor);
         mCustomLight.setDefaultColor(defaultLightColor);
-        int color = (mChannel.getLightColor() != 0 ? mChannel.getLightColor() : defaultLightColor);
-        mCustomLight.setAlphaSliderEnabled(true);
-        mCustomLight.setNewPreviewColor(color);
+        mLedColor = (mChannel.getLightColor() != 0 ? mChannel.getLightColor() : defaultLightColor);
+        mCustomLight.setAlphaSliderEnabled(false);
+        mCustomLight.setNewPreviewColor(mLedColor);
         mCustomLight.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                int color = ((Integer) newValue).intValue();
-                mChannel.setLightColor(color);
+                mLedColor = ((Integer) newValue).intValue();
+                mChannel.setLightColor(mLedColor);
                 mBackend.updateChannel(mPkg, mUid, mChannel);
+                showLedPreview();
                 return true;
             }
         });
@@ -287,6 +290,7 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
                 int val = (Integer) newValue;
                 mChannel.setLightOnTime(val);
                 mBackend.updateChannel(mPkg, mUid, mChannel);
+                showLedPreview();
                 return true;
             }
         });
@@ -303,6 +307,7 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
                 int val = (Integer) newValue;
                 mChannel.setLightOffTime(val);
                 mBackend.updateChannel(mPkg, mUid, mChannel);
+                showLedPreview();
                 return true;
             }
         });
@@ -317,20 +322,37 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
                 return true;
             }
         });
+
+        showLedPreview();
     }
 
-    private void setupSound() {
-        mSoundScreenOn = (SwitchPreference) findPreference(KEY_SOUND_SCREEN_ON);
-        mSoundScreenOn.setChecked(mChannel.shouldSoundScreenOn());
-        mSoundScreenOn.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                final boolean enable = (Boolean) newValue;
-                mChannel.setSoundScreenOn(enable);
-                mBackend.updateChannel(mPkg, mUid, mChannel);
-                return true;
+    private void showLedPreview() {
+        if (mChannel.shouldShowLights()) {
+            if (mLedColor == 0xFFFFFFFF) {
+                // argb white doesn't work
+                mLedColor = 0xffffff;
             }
-        });
+            mNm.forcePulseLedLight(
+                    mLedColor, mChannel.getLightOnTime(), mChannel.getLightOffTime());
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mNm.forcePulseLedLight(-1, -1, -1);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mNm.forcePulseLedLight(-1, -1, -1);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mNm.forcePulseLedLight(-1, -1, -1);
     }
 
     private void setupVibrate() {

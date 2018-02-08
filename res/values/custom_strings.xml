@@ -21,7 +21,7 @@
 
     <string name="show_dev_already_enabled">No Need, Development settings are enabled by default.</string>
 
-    <string name="rom_version_title">ABC Rom version</string>
+    <string name="rom_version_title">ABC ROM version</string>
 
     <!-- Changelog -->
     <string name="changelog_title">Changelog</string>
@@ -65,5 +65,13 @@
     <string name="value_equals_default">Def</string>
     <string name="show_light_on_zen_title">Blink during Do Not Disturb</string>
 
-    <string name="notif_sound_screen_on_title">Allow sound and vibration if screen is on</string>
+    <string name="wireless_charging_sounds_title">Wireless charging sounds</string>
+
+    <!-- [CHAR LIMIT=80]-->
+    <string name="fp_swipe_to_dismiss_notifications_title">Swipe fingerprint left or right to dismiss notifications</string>
+    <!--  [CHAR LIMIT=160]-->
+    <string name="fp_swipe_to_dismiss_notifications_summary">To dismiss your notifications, swipe left or right on the fingerprint sensor on the back of your phone.</string>
+
+    <!-- Notification log -->
+    <string name="notification_log_summary">Show notifications history log</string>
 </resources>
