@@ -32,11 +32,17 @@ import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settingslib.drawer.SettingsDrawerActivity;
 
 import libcore.util.Objects;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.android.settings.R;
+import android.content.Intent;
+import android.os.Handler;
+import android.widget.Toast;
 
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_THEME;
 
@@ -119,7 +125,32 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
         } catch (RemoteException e) {
             return false;
         }
+        try {
+            reload();
+        } catch (Exception ignored){
+        }
         return true;
+    }
+
+    private void reload(){
+        Intent intent2 = new Intent(Intent.ACTION_MAIN);
+        intent2.addCategory(Intent.CATEGORY_HOME);
+        intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.startActivity(intent2);
+        Toast.makeText(mContext, R.string.applying_theme_toast, Toast.LENGTH_SHORT).show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+              @Override
+              public void run() {
+                  Intent intent = new Intent(Intent.ACTION_MAIN);
+                  intent.setClassName("com.android.settings",
+                        "com.android.settings.Settings$DisplaySettingsActivity");
+                  intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                  intent.putExtra(SettingsDrawerActivity.EXTRA_SHOW_MENU, true);
+                  mContext.startActivity(intent);
+                  Toast.makeText(mContext, R.string.theme_applied_toast, Toast.LENGTH_SHORT).show();
+              }
+        }, 2000);
     }
 
     private boolean isChangeableOverlay(String packageName) {
