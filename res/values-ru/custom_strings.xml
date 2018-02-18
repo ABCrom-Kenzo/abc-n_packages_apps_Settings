@@ -23,10 +23,6 @@
 
     <string name="rom_version_title">Версия ABC ROM</string>
 
-    <!-- Changelog -->
-    <string name="changelog_title">Список изменений</string>
-    <string name="changelog_summary">С момента последнего обновления</string>
-    <string name="changelog_error">Не удается загрузить список изменений</string>
     <!-- OTA -->
     <string name="ota_settings_title">Обновления ABC ROM</string>
     <string name="ota_settings_summary">Поиск обновлений</string>
